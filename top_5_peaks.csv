@@ -1,0 +1,6 @@
+"peak_rank","date","time_slot","station_name","total_bike","latitude","longitude"
+1,2017-09-03,"13:45:00-14:00:00",Rudolf-Harbig-Weg (Olympia Park),1157,48.1689,11.5501
+2,2017-09-03,"14:00:00-14:15:00",Rudolf-Harbig-Weg (Olympia Park),945,48.1689,11.5501
+3,2019-07-09,"08:30:00-08:45:00",Erhardtstr. (Deutsches Museum),432,48.1319,11.5847
+4,2023-10-08,"14:30:00-14:45:00",Rudolf-Harbig-Weg (Olympia Park),396,48.1689,11.5501
+5,2019-07-09,"08:00:00-08:15:00",Erhardtstr. (Deutsches Museum),395,48.1319,11.5847
