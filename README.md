@@ -33,3 +33,24 @@ This repository contains a series of daily data engineering and analysis project
 | Light rain | 1,787 |
 | Moderate rain | 1,624 |
 | Heavy rain | 1,571 |
+
+---
+
+### Day 3: How Temperature Affects Bike Traffic
+
+* **Folder:** `day_3_temperature_analysis/`
+* **Question:** How does the daily high temperature affect the average number of cyclists?
+* **Process:**
+    * Wrote a SQL query using a `CASE` statement to group days into five logical temperature "buckets," from "Freezing" (<0°C) to "Hot" (>=25°C).
+    * Calculated the average `total` traffic for each bucket, rounded the result, and ordered it from highest traffic to lowest.
+* **Finding:**
+    There is a strong, positive correlation between temperature and traffic. As the weather gets warmer, the number of cyclists consistently increases. "Hot" days see nearly six times more traffic than "Freezing" days.
+
+**Final Results Table:**
+| weather_temperature | avg_daily_traffic |
+| :--- | :--- |
+| Hot | 3,231 |
+| Warm | 2,725 |
+| Cool | 1,828 |
+| Cold | 1,179 |
+| Freezing | 569 |
