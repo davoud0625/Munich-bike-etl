@@ -1,3 +1,4 @@
+
 # Munich Bike Traffic ETL & Analysis
 
 This repository contains a series of daily data engineering and analysis projects using a dataset of bike traffic in Munich.
@@ -54,3 +55,31 @@ This repository contains a series of daily data engineering and analysis project
 | Cool | 1,828 |
 | Cold | 1,179 |
 | Freezing | 569 |
+
+
+
+---
+
+### Day 4: Commuter Traffic Analysis (Weekday vs. Daily)
+
+* **Folder:** `day_4_weekday_vs_weekend/`
+* **Question:** What is the traffic pattern during the week? Is it driven by commuters or leisure?
+* **Process:**
+    1.  First, I compared "Weekdays" vs. "Weekends" using an `EXTRACT(DOW ...)` function and a `CASE` statement.
+    2.  Second, to confirm the finding, I wrote a more advanced query using a **Common Table Expression (CTE)** to get a 7-day breakdown and check for mid-week peaks.
+* **Finding 1 (Simple):**
+    Weekday traffic (avg. 2,223) is ~43% higher than weekend traffic (avg. 1,550). This suggests traffic is driven by commuting, not leisure.
+
+* **Finding 2 (Detailed):**
+    The 7-day breakdown confirms the commuter hypothesis. Traffic is lowest on weekends and peaks in the middle of the work week (Tuesday & Wednesday), with slightly less traffic on Monday and Friday.
+
+**Final Results Table (Daily Breakdown):**
+| day_name | avg_traffic |
+| :--- | :--- |
+| Wednesday | 2,320 |
+| Tuesday | 2,308 |
+| Thursday | 2,294 |
+| Monday | 2,124 |
+| Friday | 2,068 |
+| Saturday | 1,594 |
+| Sunday | 1,507 |
