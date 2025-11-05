@@ -83,3 +83,33 @@ This repository contains a series of daily data engineering and analysis project
 | Friday | 2,068 |
 | Saturday | 1,594 |
 | Sunday | 1,507 |
+
+
+---
+
+### Day 5: Finding the Peak Commute Hours (Simple & Advanced)
+
+* **Folder:** `day_5_peak_commute_hours/`
+* **Question:** When are the specific "rush hours"? And how do they differ for commuters vs. leisure riders?
+* **Process:**
+    1.  **Simple Analysis:** First, I found the busiest hour by averaging *all* days together. I used `EXTRACT(HOUR ...)` and `GROUP BY hour_of_day`.
+    2.  **Advanced Analysis:** Second, I wrote an advanced query using **three CTEs** and a **`ROW_NUMBER()` window function** to find the "Top 3" busiest hours, partitioning the data by 'Weekday' and 'Weekend'.
+
+* **Finding 1 (Simple):**
+    The busiest hours *overall* are the evening commute (5 PM & 6 PM) and the morning commute (8 AM).
+    * **Top 3 Overall:** 17:00 (5 PM), 18:00 (6 PM), 08:00 (8 AM).
+
+* **Finding 2 (Advanced):**
+    The advanced query proved that Munich has two distinct traffic profiles:
+    * **Weekdays (Commuters):** Traffic peaks at 8 AM, 6 PM, and 5 PM.
+    * **Weekends (Leisure):** Traffic peaks in the mid-afternoon (2 PM, 3 PM, 4 PM), with no morning/evening rush hour.
+
+**Advanced Results Table (Top 3):**
+| day_type | hour_of_day | avg_traffic | rank_num |
+| :--- | :--- | :--- | :--- |
+| WeekDay | 8 | 59 | 1 |
+| WeekDay | 18 | 54 | 2 |
+| WeekDay | 17 | 53 | 3 |
+| WeekEnd | 14 | 38 | 1 |
+| WeekEnd | 15 | 38 | 2 |
+| WeekEnd | 16 | 36 | 3 |
