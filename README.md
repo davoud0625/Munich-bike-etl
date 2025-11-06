@@ -113,3 +113,28 @@ This repository contains a series of daily data engineering and analysis project
 | WeekEnd | 14 | 38 | 1 |
 | WeekEnd | 15 | 38 | 2 |
 | WeekEnd | 16 | 36 | 3 |
+
+
+---
+
+### Day 6: Directional Imbalance at Stations
+
+* **Folder:** `day_6_directional_imbalance/`
+* **Question:** Is bike traffic at each station balanced, or do some stations act as "one-way" arteries?
+* **Process:**
+    * Wrote a query that **`JOINS`** the `rad_15min` (for counts) and `radzaehlstellen` (for direction names) tables.
+    * Summed the totals for `direction_1` and `direction_2` for each station.
+    * Calculated the total traffic and the *percentage* of traffic for each direction.
+    * Solved integer division by `CAST`ing the denominator to `numeric`.
+    * Solved order-of-operations issues by multiplying by 100 *inside* the `ROUND()` function.
+* **Finding:**
+    The analysis revealed a dramatic difference between stations. Some are perfectly balanced, while others are heavily skewed.
+    * **"Arnulf"** is a major eastbound artery, with **94.17%** of its traffic flowing East.
+    * **"Olympia"** is almost perfectly balanced (50.33% / 49.67%).
+
+**Final Results Table (Sample):**
+| station_name_short | direction_1 | total_traffic_dir_1 | direction_2 | total_traffic_dir_2 | percent_dir_1 | percent_dir_2 |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| Arnulf | Ost | 2,833,542 | West | 175,263 | 94.17 | 5.83 |
+| Erhardt | Süd | 6,442,653 | Nord | 6,126,304 | 51.26 | 48.74 |
+| Olympia | Nord | 2,788,426 | Süd | 2,751,734 | 50.33 | 49.67 |
