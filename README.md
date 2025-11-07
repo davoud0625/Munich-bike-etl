@@ -138,3 +138,27 @@ This repository contains a series of daily data engineering and analysis project
 | Arnulf | Ost | 2,833,542 | West | 175,263 | 94.17 | 5.83 |
 | Erhardt | Süd | 6,442,653 | Nord | 6,126,304 | 51.26 | 48.74 |
 | Olympia | Nord | 2,788,426 | Süd | 2,751,734 | 50.33 | 49.67 |
+
+
+
+---
+
+### Day 7: Advanced (LAG) - The "Heatwave Effect"
+
+* **Folder:** `day_7_heatwave_effect/`
+* **Question:** How does a sustained heatwave affect traffic compared to a single isolated hot day?
+* **Process:**
+    * Wrote an advanced query using the **`LAG()`** window function in a CTE to get the temperatures for the two previous days.
+    * Used **`PARTITION BY station_name_short`** in the `OVER()` clause to prevent data "cross-talk" between stations, ensuring an accurate time-series for each location.
+    * Created two buckets: 'HeatWave Day' (3+ consecutive days > 25°C) and 'Normal Hot Day'.
+    * Aggregated the average traffic for each bucket.
+* **Finding:**
+    The data revealed a counter-intuitive insight: average traffic on "HeatWave Days" (3,153) is slightly **lower** than on "Normal Hot Days" (3,318).
+* **Hypothesis:**
+    The novelty of a single hot day encourages biking. However, the sustained, oppressive heat of a multi-day heatwave drains energy and can discourage outdoor activity.
+
+**Final Results Table:**
+| condition_temp | avg_traffic | num_of_days |
+| :--- | :--- | :--- |
+| Normal Hot Day | 3,318 | 1,480 |
+| HeatWave Day | 3,153 | 1,604 |
